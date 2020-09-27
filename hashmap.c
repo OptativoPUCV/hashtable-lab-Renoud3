@@ -87,7 +87,7 @@ void * searchMap(HashMap * map,  char * key) {
         a = 0;
         return map -> buckets[a];
       }
-    } while (map -> buckets[a] != NULL);
+    } while (key != NULL);
   }
   return NULL;
 }

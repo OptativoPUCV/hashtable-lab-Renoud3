@@ -85,7 +85,6 @@ void * searchMap(HashMap * map,  char * key) {
       if (is_equal(map -> buckets[a] -> key , key)) {
         map -> current = a;
         return map -> buckets[a] -> value;
-        break;
       }
     } while (a < map -> capacity);
   }

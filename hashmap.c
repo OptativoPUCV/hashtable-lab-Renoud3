@@ -60,14 +60,13 @@ void insertMap(HashMap * map, char * key, void * value) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
-
-
+    
 }
 
 
 HashMap * createMap(long capacity) {
   HashMap * map = (HashMap *) malloc (sizeof (HashMap));
-  map -> buckets = (Pair**) calloc (capacity,sizeof(Pair*));
+  map -> buckets = (Pair**) calloc (capacity , sizeof(Pair*));
   map -> current = -1;
   map -> capacity = capacity;
   return map;
@@ -83,11 +82,12 @@ void * searchMap(HashMap * map,  char * key) {
   if (map -> buckets[a] != NULL) {
     do {
       a++;
-      if (a >= map -> capacity) {
-        a = 0;
-        return map -> buckets[a];
+      if (is_equal(map -> buckets[a] -> key , key)) {
+        map -> current = a;
+        return map -> buckets[a] -> value;
+        break;
       }
-    } while (map -> buckets[a] != NULL);
+    } while (a < map -> capacity);
   }
   return NULL;
 }

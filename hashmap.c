@@ -79,15 +79,15 @@ void eraseMap(HashMap * map,  char * key) {
 
 void * searchMap(HashMap * map,  char * key) {   
   unsigned long long a = hash(key , map -> capacity);
-  if (map -> buckets[a] != NULL) {
-    do {
-      a++;
+  do {
+    if (map -> buckets[a] != NULL) {
       if (is_equal(map -> buckets[a] -> key , key)) {
         map -> current = a;
         return map -> buckets[a] -> value;
       }
-    } while (a < map -> capacity);
-  }
+    }
+    a++;
+  } while (a < map -> capacity);
   return NULL;
 }
 

@@ -85,11 +85,11 @@ void * searchMap(HashMap * map,  char * key) {
       a++;
       if (a >= map -> capacity) {
         a = 0;
-        return NULL;
+        return map -> buckets[a];
       }
     } while (map -> buckets[a] != NULL);
   }
-  return map -> buckets[a];
+  return NULL;
 }
 
 void * firstMap(HashMap * map) {

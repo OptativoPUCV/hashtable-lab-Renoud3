@@ -66,12 +66,16 @@ void enlarge(HashMap * map) {
     map -> capacity *= 2;
     map -> buckets = (Pair**) calloc (map -> capacity , sizeof(Pair*));
     capacidad = map -> capacity;
-    for (a = 0 ; a < capacidad ; a++) {
+    a = 0;
+    do {
       if (auxiliar[a] != NULL) {
         insertMap(map , auxiliar[a] -> key , auxiliar[a] -> value);
-        break;
+        a++;
       }
-    }
+      else {
+        a++;
+      }
+    } while (a < capacidad);
     
 }
 

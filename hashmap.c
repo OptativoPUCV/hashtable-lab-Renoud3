@@ -115,7 +115,7 @@ void * firstMap(HashMap * map) {
 
 void * nextMap(HashMap * map) {
   int a;
-  for (a = 1 ; a < map -> capacity ; a++) {
+  for (a = map -> current + 1 ; a < map -> capacity ; a++) {
     if ((map -> buckets[a] != NULL) && (map -> buckets[a] -> key != NULL)) {
       map -> current = a;
       return map -> buckets[a] -> value;

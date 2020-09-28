@@ -60,6 +60,17 @@ void insertMap(HashMap * map, char * key, void * value) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
+    unsigned long long capacidad;
+    unsigned long long a;
+    Pair ** auxiliar = map -> buckets;
+    map -> capacity *= 2;
+    map -> buckets = (Pair**) calloc (map -> capacity , sizeof(Pair));
+    capacidad = map -> capacity;
+    for (a = 0 ; a < capacidad ; a++) {
+      if (auxiliar[a] != NULL) {
+        insertMap(map , auxiliar[a] -> key , auxiliar[a] -> value);
+      }
+    }
     
 }
 
@@ -92,11 +103,9 @@ void * searchMap(HashMap * map,  char * key) {
 }
 
 void * firstMap(HashMap * map) {
-
-    return NULL;
+  return NULL;
 }
 
 void * nextMap(HashMap * map) {
-
-    return NULL;
+  return NULL;
 }

@@ -103,9 +103,23 @@ void * searchMap(HashMap * map,  char * key) {
 }
 
 void * firstMap(HashMap * map) {
+  unsigned long long a;
+  for (a = 0 ; a < map -> capacity ;a++) {
+    if (map -> buckets[a] != NULL) {
+      map -> current = a;
+      return map -> buckets[a] -> value;
+    }
+  }
   return NULL;
 }
 
 void * nextMap(HashMap * map) {
+  unsigned long long a;
+  for (a = 0 ; a < map -> capacity ;a++) {
+    if (map -> buckets[a + 1] != NULL) {
+      map -> current = a + 1;
+      return map -> buckets[a+ 1] -> value;
+    }
+  }
   return NULL;
 }
